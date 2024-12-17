@@ -81,8 +81,6 @@ darkmode_toggle.onclick = (e) => {
 
 function loginData() {
 
-    getIPAddress();
-
     let IPAddressVisitor;
     let username = document.getElementById('input-username').value;
     let password = document.getElementById('input-password').value;
